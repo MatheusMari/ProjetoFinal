@@ -1,24 +1,16 @@
 {
   "name": "projetofinal",
-  "version": "1.0.0",
-  "description": "Este repositorio esta sendo criado para a apresentação do projeto da disciplina de programação web-backend",
-  "main": "index.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "cookie-parser": "^1.4.6",
-    "express": "^4.19.2",
-    "express-session": "^1.18.0",
-    "jsonwebtoken": "^9.0.2",
-    "mysql2": "^3.11.0",
-    "nodemon": "^3.1.4",
-    "passport": "^0.7.0",
-    "passport-local": "^1.0.0",
-    "sequelize": "^6.37.3",
-    "swagger-autogen": "^2.23.7",
-    "swagger-ui-express": "^5.0.1"
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1"
   }
 }
