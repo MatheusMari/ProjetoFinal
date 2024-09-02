@@ -5,16 +5,16 @@ const User = require('./User');
 const Task = sequelize.define('Task', {
     title: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
     },
     description: {
         type: DataTypes.TEXT,
-        allowNull: true
+        allowNull: true,
     },
     completed: {
         type: DataTypes.BOOLEAN,
-        defaultValue: false
-    }
+        defaultValue: false,
+    },
 });
 
 Task.belongsTo(User);

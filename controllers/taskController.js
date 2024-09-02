@@ -1,4 +1,4 @@
-const Task = require('../models/Task');
+const Task = require('../model/Tasks.js');
 
 exports.getAllTasks = async (req, res) => {
     const { limit = 10, page = 1 } = req.query;
@@ -19,7 +19,11 @@ exports.getTaskById = async (req, res) => {
 
 exports.createTask = async (req, res) => {
     const { title, description } = req.body;
-    const task = await Task.create({ title, description, UserId: req.user.userId });
+    const task = await Task.create({
+        title,
+        description,
+        UserId: req.user.userId,
+    });
     res.status(201).json(task);
 };
 

@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const User = require('../model/User.js');
 
 exports.createAdmin = async (req, res) => {
     const { username, password } = req.body;
