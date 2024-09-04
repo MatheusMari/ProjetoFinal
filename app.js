@@ -51,7 +51,7 @@ async function populateDB() {
         tasks.push({
             title: `Task ${x + 1}`,
             description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                'Limpar a casa',
             completed: false,
             UserId: x + 1,
         });
@@ -63,6 +63,11 @@ async function populateDB() {
 }
 
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server rodando na porta ${3000}`));
+
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger-output.json');
+
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 module.exports = app;
