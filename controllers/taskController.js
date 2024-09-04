@@ -47,3 +47,18 @@ exports.deleteTask = async (req, res) => {
     const task = await Task.destroy({ where: { id } });
     res.status(200).json({ message: 'Task deleted' });
 };
+
+
+// Controlador para contar as tarefas de um usuário
+exports.countUserTasks = async (req, res) => {
+    try {
+       
+        const taskCount = await Task.count({ })+1;
+
+        // Retorna a contagem como resposta
+        res.json({ count: taskCount });
+    } catch (error) {
+        console.error('Erro ao contar tarefas:', error);
+        res.status(500).json({ error: 'Erro ao contar tarefas' });
+    }
+};

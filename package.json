@@ -3,6 +3,7 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
+        "prestart": "node swagger.js",
         "start": "nodemon -e js,json,.env ./bin/www"
     },
     "dependencies": {
@@ -17,6 +18,8 @@
         "morgan": "~1.9.1",
         "mysql2": "^2.3.0",
         "nodemon": "^3.1.4",
-        "sequelize": "^6.6.5"
+        "sequelize": "^6.6.5",
+        "swagger-autogen": "^2.23.7",
+        "swagger-ui-express": "^5.0.1"
     }
 }
