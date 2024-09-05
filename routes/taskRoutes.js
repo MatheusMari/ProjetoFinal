@@ -14,7 +14,7 @@ const router = express.Router();
 
 
 router.get('/tasks', authenticate, getAllTasks);
-router.get('/tasks/e/:id', authenticate, getTaskById);
+router.get('/tasks/a/:id', authenticate, getTaskById);
 router.post('/tasks', authenticate, createTask);
 router.put('/tasks/:id', authenticate, updateTask);
 router.delete('/tasks/:id', authenticate, deleteTask);
