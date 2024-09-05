@@ -25,20 +25,6 @@ Criação de rotas específicas para funcionalidades avançadas.
 Rotas Especiais
 GET /install/: Realiza a instalação do banco de dados, criando as tabelas/coleções e populando-as com dados iniciais.
 GET /docs/: Documentação da API gerada pelo Swagger.
-Como Executar o Projeto
-Pré-requisitos
-Node.js instalado.
-Banco de dados configurado (MySQL, PostgreSQL ou MongoDB).
-Configurar as variáveis de ambiente no arquivo .env.
-Instalação
-Clone o repositório:
-
-bash
-Copiar código
-git clone https://github.com/seu-usuario/seu-repositorio.git
-Instale as dependências:
-
-Utilize ferramentas como Insomnia ou Postman para testar as rotas da API.
 
 Estrutura do Projeto
 models/: Definições das entidades e seus relacionamentos.
