@@ -31,3 +31,38 @@ exports.login = async (req, res) => {
         res.status(401).json({ error: 'Invalid credentials' });
     }
 };
+
+exports.updateUser = async (req, res) => {
+    const { id } = req.params;
+    const { username, password } = req.body;
+    
+    try {
+        if (req.user.userId == id || req.user.role == 'admin') {
+            const oldUser = await User.findByPk(id);
+
+            if (!oldUser) {
+                return res.status(404).json({
+                    error: 'Usuário não encontrado.',
+                });
+            }
+
+            const hashedPassword = password ? await bcrypt.hash(password, 10) : oldUser.password; // Hash a senha se fornecida
+
+            const newUser = await oldUser.update({
+                username: username,
+                password: hashedPassword,
+            });
+
+            res.status(200).json({
+                newUser,
+            });
+        } else {
+            return res.status(403).json({
+                error: 'Só é permitido alteração de suas próprias credenciais.',
+            });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(400).json({ error: 'Usuário não pode ser atualizado' });
+    }
+}
