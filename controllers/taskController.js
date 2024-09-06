@@ -16,15 +16,25 @@ exports.getTaskById = async (req, res) => {
         res.status(404).json({ error: 'Task not found' });
     }
 };
-
 exports.createTask = async (req, res) => {
     const { title, description } = req.body;
-    const task = await Task.create({
-        title,
-        description,
-        UserId: req.user.userId,
-    });
-    res.status(201).json(task);
+
+    // Verificar se o título contém números
+    if (/\d/.test(title)) {
+        return res.status(400).json({ error: 'o titulo não pode conter numeros' });
+    }
+
+    try {
+        const task = await Task.create({
+            title,
+            description,
+            UserId: req.user.userId,
+        });
+
+        res.status(201).json(task);
+    } catch (error) {
+        res.status(400).json({ error: 'Task could not be created' });
+    }
 };
 
 exports.updateTask = async (req, res) => {

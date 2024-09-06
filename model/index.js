@@ -9,7 +9,7 @@ Task.belongsTo(User, { foreignKey: 'UserId' });
 // Sincronizar modelos com o banco de dados
 const initializeDatabase = async () => {
     try {
-        await sequelize.sync({ force: false }); // Use force: true para sobrescrever tabelas existentes
+        await sequelize.sync({ force: false }); 
         console.log('Database synchronized');
     } catch (error) {
         console.error('Failed to synchronize database:', error);

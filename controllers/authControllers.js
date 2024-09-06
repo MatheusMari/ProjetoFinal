@@ -1,16 +1,25 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../model/User.js');
+const { STRING } = require('sequelize');
 
 exports.register = async (req, res) => {
     const { username, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Verificar se o username é um número
+    if (!isNaN(username)) {
+        return res.status(400).json({ error: 'o usuario não pode ser feito com numeros' });
+    }
+
     try {
+        const hashedPassword = await bcrypt.hash(password, 10);
+
         const user = await User.create({
             username,
             password: hashedPassword,
             role: 'user',
         });
+
         res.status(201).json(user);
     } catch (error) {
         res.status(400).json({ error: 'User could not be created' });
