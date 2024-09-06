@@ -52,8 +52,8 @@ exports.deleteTask = async (req, res) => {
 // Controlador para contar as tarefas de um usuário
 exports.countUserTasks = async (req, res) => {
     try {
-       
-        const taskCount = await Task.count({ })+1;
+
+        const taskCount = await Task.count({}) + 1;
 
         // Retorna a contagem como resposta
         res.json({ count: taskCount });

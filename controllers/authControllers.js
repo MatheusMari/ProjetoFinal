@@ -35,7 +35,7 @@ exports.login = async (req, res) => {
 exports.updateUser = async (req, res) => {
     const { id } = req.params;
     const { username, password } = req.body;
-    
+
     try {
         if (req.user.userId == id || req.user.role == 'admin') {
             const oldUser = await User.findByPk(id);
