@@ -1,3 +1,4 @@
+const { token } = require('morgan');
 const Task = require('../model/Tasks.js');
 
 exports.getAllTasks = async (req, res) => {
@@ -70,5 +71,53 @@ exports.countUserTasks = async (req, res) => {
     } catch (error) {
         console.error('Erro ao contar tarefas:', error);
         res.status(500).json({ error: 'Erro ao contar tarefas' });
+    }
+};
+
+
+
+exports.getTaskCounts = async (req, res) => {
+    try {
+        const tarefacomplet = await Task.count({
+            where: { completed: true }
+        });
+
+        const tarefaaber = await Task.count({
+            where: { completed: false }
+        });
+
+        res.json({
+            tarefacomplet: tarefacomplet,
+            tarefaaber: tarefaaber
+        });
+    } catch (error) {
+        console.error('Erro ao contar tarefas:', error);
+        res.status(500).json({ error: 'Erro ao contar tarefas' });
+    }
+};
+exports.countCompletedTasksByUser = async (req, res) => {
+    try {
+        
+        const usuario = req.user.userId
+        
+        if (!usuario) {
+            return res.status(400).json({ error: 'ID do usuário não encontrado' });
+        }
+
+        
+        const completedTaskCount = await Task.count({
+            where: {
+                userId: usuario, 
+                completed: false
+            }
+        });
+
+        
+        
+       
+        res.json({ count: completedTaskCount });
+    } catch (error) {
+        console.error('Erro ao contar tarefas concluídas por usuário:', error);
+        res.status(500).json({ error: 'Erro ao contar tarefas concluídas por usuário' });
     }
 };

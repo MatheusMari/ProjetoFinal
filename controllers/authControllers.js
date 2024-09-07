@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt');
 const User = require('../model/User.js');
 const { STRING } = require('sequelize');
 
+
+
 exports.register = async (req, res) => {
     const { username, password } = req.body;
 
